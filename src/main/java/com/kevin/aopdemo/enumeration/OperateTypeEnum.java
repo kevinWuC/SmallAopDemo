@@ -43,7 +43,7 @@ public enum OperateTypeEnum {
     /**
      * 根据 name 获取 type
      *
-     * @param code
+     * @param name
      * @return
      */
     public static Integer getTypeByName(String name) {

@@ -69,7 +69,6 @@ public class LogRecordAspect {
             return "";
         }
 
-        // TODO 如果是导出
 
         String resultStr = JSON.toJSONString(result);
         System.out.println("————————————————————————");

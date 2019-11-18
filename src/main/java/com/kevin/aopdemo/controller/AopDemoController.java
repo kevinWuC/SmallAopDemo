@@ -2,11 +2,11 @@ package com.kevin.aopdemo.controller;
 
 import com.kevin.aopdemo.anotation.LogRecord;
 import com.kevin.aopdemo.dto.UserDTO;
+import com.kevin.aopdemo.dto.UserModel;
+import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author dell
@@ -17,9 +17,11 @@ import javax.servlet.http.HttpServletRequest;
 public class AopDemoController {
 
     @RequestMapping(value = "/user/hello")
-    @LogRecord(operateType = 2, recordContent = {"userId", "userName"})
-    public Boolean sayHello(@RequestBody UserDTO dto) {
-        return true;
+    @LogRecord(operateType = 2, recordContent = {"userName"})
+    public UserModel sayHello(@RequestBody UserDTO dto) {
+        UserModel model = new UserModel();
+        BeanUtils.copyProperties(dto, model);
+        return model;
     }
 
 
